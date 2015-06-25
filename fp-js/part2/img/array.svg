@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="302" height="102" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_12" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="58.5" cy="49.75" id="svg_1" rx="27" ry="27"/>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="150.5" cy="49.75" id="svg_2" rx="27" ry="27"/>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="242.5" cy="49.75" id="svg_3" rx="27" ry="27"/>
+  <line fill="none" stroke="#ffffff" stroke-width="1.5" x1="86.5" y1="49.75" x2="123.269553" y2="49.75" id="svg_4" stroke-linejoin="null" stroke-linecap="null"/>
+  <line fill="none" stroke-width="1.5" x1="177.5" y1="49.75" x2="214.269553" y2="49.75" id="svg_5" stroke-linejoin="null" stroke-linecap="null" stroke="#ffffff"/>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" x="51.820313" y="57.75" id="svg_6" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">1</text>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" x="143.820313" y="57.75" id="svg_7" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">2</text>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" stroke-opacity="null" x="235.820313" y="57.75" id="svg_8" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">3</text>
+ </g>
+</svg>

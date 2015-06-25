@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<svg width="700" height="100" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="702" height="102" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_10" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="70.5" cy="50" id="svg_1" rx="27" ry="27"/>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="162.5" cy="50" id="svg_2" rx="27" ry="27"/>
+  <ellipse fill="#4c4c4c" stroke="#fff" stroke-width="3" cx="254.5" cy="50" id="svg_3" rx="27" ry="27"/>
+  <line fill="none" stroke="#ffffff" stroke-width="1.5" x1="98.5" y1="50" x2="135.269553" y2="50" id="svg_4" stroke-linejoin="null" stroke-linecap="null"/>
+  <line fill="none" stroke-width="1.5" x1="189.5" y1="50" x2="226.269553" y2="50" id="svg_5" stroke-linejoin="null" stroke-linecap="null" stroke="#ffffff"/>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" x="63.820313" y="58" id="svg_6" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">1</text>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" x="155.820313" y="58" id="svg_7" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">2</text>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" stroke-opacity="null" x="247.820313" y="58" id="svg_8" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">3</text>
+  <path fill="#4c4c4c" stroke="#fff" stroke-width="3" d="m355.556427,63.290848l8.182251,-8.208992l-15.818085,0l-15.818146,0l0,-5.081856l0,-5.081917l15.637024,0c8.59964,0 15.635498,-0.257523 15.635498,-0.572269c0,-0.3148 -3.423492,-4.008942 -7.607544,-8.209141l-7.607483,-7.636673l7.031158,0l7.032745,0l10.739594,10.760338l10.739685,10.760124l-10.760101,10.739861l-10.760132,10.739677l-7.404388,0l-7.402771,0l8.180695,-8.209152l0,0z" id="svg_9"/>
+  <ellipse fill="#4c4c4c" stroke="#ffffff" stroke-width="3" cx="474.5" cy="50" id="svg_38" rx="43" ry="43"/>
+  <text fill="#ffffff" stroke="#ffffff" stroke-width="0" stroke-opacity="null" x="467.820313" y="58" id="svg_39" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve">6</text>
+ </g>
+</svg>

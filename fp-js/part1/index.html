@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>reveal.js - The HTML Presentation Framework</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <style>
+    .full-screen {
+        top: 0 !important;
+        padding: 0 !important;
+    }
+
+    .full-screen pre {
+        margin: 0 auto !important;
+    }
+
+    .full-screen code {
+        max-height: 700px !important;
+    }
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+	<!--<section data-background="img/right-way.jpg" data-background-size="500px">-->
+	<!--</section>-->
+
+	<section>
+	  <h1>From Zero <br>to FRP hero</h1>
+	  <h3>Part 1: The Functional Way</h3>
+	  <aside class="notes">
+		<ul>
+		  <li>esotheric subject</li>
+		  <li>admission: I am not going to talk about FRP today. Functional programming instead.</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <blockquote>
+        <p>Clojure is like JavaScript but no one writes JavaScript that way</p>
+         &mdash; one of you
+      </blockquote>
+	  <aside class="notes">
+		<ul>
+		  <li>A while back we had a closure kata</li>
+		  <li>The idea to do this talk</li>
+		  <li>Not true</li>
+		</ul>
+	  </aside>
+	</section>
+	<section>
+	  <blockquote>
+		<p>The strength of JavaScript is that you can do anything. The weakness is that you will.</p>
+		&mdash; Reginald Braithwaite
+	  </blockquote>
+	  <aside class="notes">
+		<ul>
+		  <li>supports procedural, object oriented and functional paradigms</li>
+		  <li>restates Atwood's Law</li>
+		</ul>
+	  </aside>
+    </section>
+
+	<section>
+	  <h2>Why?</h2>
+	</section>
+
+	<section>
+	  <blockquote>
+		<p>Functional programming combines the flexibility and power of abstract mathematics with the intuitive clarity of abstract mathematics.</p>
+		&mdash; Randall Munroe, the XKCD guy
+	  </blockquote>
+	  <aside class="notes">
+		<ul>
+		  <li>for some people the best reason to use FP is its strong academic and especially mathematical background</li>
+		  <li>programs can be broken down into smaller, simpler pieces that are both more reliable and easier to understand</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <img src="img/functional.png">
+	  <aside class="notes">
+		<ul>
+		  <li>never really discussed what is FP good for</li>
+		  <li>it's hip</li>
+		  <li>it parallelises well (Clojure and Akamai)</li>
+		  <li>javascript not really that great at that</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <h2>Practical reasons</h2>
+	  <ul>
+		<li>immutability</li>
+		<li>separability</li>
+		<li>composability</li>
+		<li>reusability</li>
+		<li>testability</li>
+	  </ul>
+
+	  <aside class="notes">
+		<ul>
+		  <li>first class functions, no side effects, lambda calculus</li>
+		  <li>immutable, embracing history,</li>
+		  <li>stateless, pinacle pure function</li>
+		  <li>small well defined but generic functions</li>
+		  <li>which can be easily combined, reused and tested in separation</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <h2>How?</h2>
+	  <aside class="notes">
+		which brings us to the question how you go about writing functional code. in javascript
+	  </aside>
+	</section>
+
+	<section>
+	  <h2>Functional JS</h2>
+
+	  <ul style="list-style: none;">
+        <li>&#10004; higher order functions</li>
+        <li>&#10004; closures</li>
+        <li>&#10004; tail call elimination (in ES6)</li>
+        <li>&#10004; easy lambda syntax (even better in ES6)</li>
+        <li>&#10008; extensive list of functional primitives</li>
+		<li>&#10008; pattern matching, purity, etc</li>
+      </ul>
+	  <aside class="notes">
+		<ul>
+		  <li>we said initially that js is functional</li>
+		  <li>what makes js functional</li>
+		  <li>how does it compare to other functional languages</li>
+		  <li>javascript has a lot of functional constructs but not all</li>
+		  <li>array comprehensions coming in ES7</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <blockquote class="twitter-tweet" lang="en"><p>Sometimes, the elegant implementation is just a function. Not a method. Not a class. Not a framework. Just a function.</p>&mdash; John Carmack (@ID_AA_Carmack) <a href="https://twitter.com/ID_AA_Carmack/status/53512300451201024">March 31, 2011</a></blockquote>
+	  <aside class="notes">
+		<ul>
+		  <li>at the end of the day doesn't matter, programming with functions</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <h2>Some assembly required</h2>
+	  <img src="img/assembly_required.jpg">
+	</section>
+
+	<section>
+	  <h2>Composition</h2>
+	  <p>f(g(x)) === (g &#8728; f)(x)</p>
+	  <img src="img/compfun.png" style="background: white;">
+
+      <pre>
+        <code data-trim contenteditable>
+Math.round(Math.sqrt(x)) === _.compose(Math.sqrt, Math.round)(x)
+        </code>
+      </pre>
+	</section>
+
+	<section>
+	  <h2>Partial application</h2>
+	  <p>creates a function with some of the arguments already prefilled</p>
+      <pre>
+        <code data-trim contenteditable>
+const logger = console.log.bind(console, 'Logger:');
+logger('How much wood would a woodchuck chuck?');
+//"Logger: How much wood would a woodchuck chuck?"
+
+const lt = (a, b) => a < b;
+const lt4 = _.partialRight(lt, 4);
+lt4(3);
+//true
+
+const gt5 = _.partial(lt, 5);
+gt5(3);
+//false
+        </code>
+      </pre>
+
+	</section>
+
+	<section>
+	  <h2>JS support</h2>
+	  <img src="img/kennedy.jpg">
+	  <aside class="notes">
+		<ul>
+		  <li>we said JS is a functional language but so far we need to use an external library</li>
+		  <li>what is actually supported by the language</li>
+		</ul>
+	  </aside>
+	</section>
+
+	<section>
+	  <h2>Arrow functions</h2>
+	  <p>Just like current functions but with lexical scoping</p>
+	  <pre>
+        <code data-trim contenteditable>
+var test = {
+  name: 'Igor',
+  log: function() {
+    setTimeout(() => console.log('Hi', this.name), 100);
+  }
+};
+        </code>
+	  </pre>
+      <pre>
+        <code data-trim contenteditable>
+var test = {
+  name: 'Igor',
+  log: function() {
+    setTimeout(function() {
+      console.log('Hi', this.name);
+    }.bind(this), 100);
+  }
+};
+        </code>
+      </pre>
+	</section>
+
+	<section>
+	  <h2>Destructuring</h2>
+	  <p>similar to Ruby and other languages</p>
+	  <pre>
+        <code data-trim contenteditable>
+var [a, b] = [1, 2];
+//a === 1
+//b === 2
+		</code>
+	  </pre>
+	  <pre>
+        <code data-trim contenteditable>
+var {a, b} = {a:1, b:2};
+//a === 1
+//b === 2
+		</code>
+	  </pre>
+	</section>
+
+	<section>
+	  <h2>Array#forEach</h2>
+	  <p>executes a provided function once per array element</p>
+	  <pre>
+        <code data-trim contenteditable>
+[1, 2, 3].forEach(element => console.log(element));
+//1
+//2
+//3
+		</code>
+	  </pre>
+	</section>
+
+	<section>
+	  <h2>Array#map</h2>
+	  <p>creates a new array with the results of calling a provided function on every element in this array</p>
+	  <pre>
+        <code data-trim contenteditable>
+[1, 2, 3].map(element => element * 2);
+//[2, 4, 6]
+		</code>
+	  </pre>
+	</section>
+
+	<section>
+	  <h2>Array#filter</h2>
+	  <p>creates a new array with all elements that pass the test implemented by the provided function</p>
+	  <pre>
+        <code data-trim contenteditable>
+[1, 2, 3].filter(element => element > 2);
+//[3]
+		</code>
+	  </pre>
+	</section>
+
+	<section>
+	  <h2>Array#reduce</h2>
+	  <p>applies a function to each value in the array to reduce it to a single value</p>
+	  <pre>
+        <code data-trim contenteditable>
+[1, 2, 3].reduce((a, b) => a + b);
+//6
+		</code>
+	  </pre>
+	</section>
+
+
+	<section>
+	  <h2>Half time question</h2>
+	  <pre>
+        <code data-trim contenteditable>
+for (var i = 2; i <= upperLimit; i++) {
+  if (array[i]) {
+    for (var j = i * i; j < n; j += i) {
+      array[j] = false;
+    }
+  }
+}
+        </code>
+      </pre>
+	</section>
+
+	<section>
+	  <h2>Sieve of Eratosthenes</h2>
+	  <p>removes composite numbers by eliminating the multiples of each prime, starting with the multiples of 2</p>
+	</section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code data-trim contenteditable>
+function eratosthenes(n) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+		</code>
+	  </pre>
+	</section>
+
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code data-trim contenteditable>
+function eratosthenes(n) {
+  var array = [],
+
+
+
+  for (var i = 0; i < n; i++) {
+    array.push(true);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+		</code>
+	  </pre>
+	</section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code data-trim contenteditable>
+function eratosthenes(n) {
+  var array = [],
+      upperLimit = Math.sqrt(n),
+
+
+  for (var i = 0; i < n; i++) {
+    array.push(true);
+  }
+
+  for (var i = 2; i <= upperLimit; i++) {
+    if (array[i]) {
+      for (var j = i * i; j < n; j += i) {
+        array[j] = false;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+}
+		</code>
+	  </pre>
+	</section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code data-trim contenteditable>
+function eratosthenes(n) {
+  var array = [],
+      upperLimit = Math.sqrt(n),
+      output = [];
+
+  for (var i = 0; i < n; i++) {
+    array.push(true);
+  }
+
+  for (var i = 2; i <= upperLimit; i++) {
+    if (array[i]) {
+      for (var j = i * i; j < n; j += i) {
+        array[j] = false;
+      }
+    }
+  }
+
+  for (var i = 2; i < n; i++) {
+    if(array[i]) {
+      output.push(i);
+    }
+  }
+
+  return output;
+}
+		</code>
+	  </pre>
+	</section>
+
+    <section>
+	  <img src="img/koala.jpg" alt=""/>
+	</section>
+
+	<section>
+	  <pre class="fragment"><code>sieve([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);</code></pre>
+	  <pre class="fragment"><code>[3] + sieve([5, 7, 11, 13, 17, 19]);</code></pre>
+	  <pre class="fragment"><code>[3, 5] + sieve([7, 11, 13, 17, 19]);</code></pre>
+	  <pre class="fragment"><code>[3, 5, 7] + sieve([11, 13, 17, 19]);</code></pre>
+	</section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code  contenteditable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code contenteditable>
+
+
+
+
+
+function sieve(numbers) {
+  const [head, ...rest] = numbers;
+
+
+
+
+
+
+
+
+}
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code contenteditable>
+
+
+
+
+
+function sieve(numbers) {
+  const [head, ...rest] = numbers;
+
+  if(integerSqrt(_.last(rest)) < head) {
+    return numbers;
+  }
+
+
+
+
+}
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code contenteditable>
+
+
+
+
+
+function sieve(numbers) {
+  const [head, ...rest] = numbers;
+
+  if(integerSqrt(_.last(rest)) < head) {
+    return numbers;
+  }
+
+  const getPrimesIn = _.compose(sieve, filterDivisibleBy(head));
+
+
+}
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code contenteditable>
+
+
+
+
+
+function sieve(numbers) {
+  const [head, ...rest] = numbers;
+
+  if(integerSqrt(_.last(rest)) < head) {
+    return numbers;
+  }
+
+  const getPrimesIn = _.compose(sieve, filterDivisibleBy(head));
+
+  return [head].concat(getPrimesIn(rest));
+}
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section data-transition="fade" class="full-screen">
+	  <pre>
+        <code data-trim contenteditable>
+function getPrimesLessThan(n) {
+  const primesInRange = _.compose(sieve, _.range);
+  
+  return primesInRange(2, 100);
+}
+
+function sieve(numbers) {
+  const [head, ...rest] = numbers;
+
+  if(integerSqrt(_.last(rest)) < head) {
+    return numbers;
+  }
+
+  const getPrimesIn = _.compose(sieve, filterDivisibleBy(head));
+
+  return [head].concat(getPrimesIn(rest));
+}
+
+function filterDivisibleBy(number) {
+  return _.partialRight(_.filter, divisibleBy(number));
+}
+
+function divisibleBy(divisor) {
+  return element => element % divisor;
+}
+
+function integerSqrt(number) {
+  return _.compose(Math.round, Math.sqrt)(number);
+}
+        </code>
+      </pre>
+    </section>
+
+	<section>
+	  <h1>Next time</h1>
+	</section>
+
+	<section>
+	  <img src="img/list-stream.jpg" alt=""/>
+	</section>
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: true,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// Optional reveal.js plugins
+	dependencies: [
+	  { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: 'plugin/zoom-js/zoom.js', async: true },
+	  { src: 'plugin/notes/notes.js', async: true }
+	]
+  });
+
+</script>
+
+</body>
+</html>

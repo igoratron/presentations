@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>reveal.js - The HTML Presentation Framework</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="css/presentation.css">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <style>
+    .full-screen {
+        top: 0 !important;
+        padding: 0 !important;
+    }
+
+    .full-screen pre {
+        margin: 0 auto !important;
+    }
+
+    .full-screen code {
+        max-height: 700px !important;
+    }
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/Bacon.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+	<!--<section data-background="img/right-way.jpg" data-background-size="500px">-->
+	<!--</section>-->
+
+	<section>
+	  <h1>From Zero <br>to FRP hero</h1>
+	  <h3>Part 2: The actual talk</h3>
+	  <aside class="notes">
+		<ul>
+		</ul>
+	  </aside>
+	</section>
+
+    <section>
+      <h1>Last time</h1>
+    </section>
+
+    <section>
+      <h2>
+        Operations on sequences
+      </h2>
+    </section>
+
+    <section>
+      <h2>Array#map</h2>
+      <img src="img/map.svg">
+	  <pre>
+        <code data-trim contenteditable>
+          [1, 2, 3].map(element => element * 2);
+          //[2, 4, 6]
+        </code>
+	  </pre>
+    </section>
+
+    <section>
+      <h2>Array#filter</h2>
+      <img src="img/filter.svg">
+	  <pre>
+        <code data-trim contenteditable>
+          [1, 2, 3].filter(element => element % 2);
+          //[1, 3]
+        </code>
+	  </pre>
+    </section>
+
+    <section>
+      <h2>Array#reduce</h2>
+      <img src="img/reduce.svg">
+	  <pre>
+        <code data-trim contenteditable>
+          [1, 2, 3].reduce((a, b) => a + b);
+          //6
+        </code>
+	  </pre>
+    </section>
+
+	<section>
+	  <img src="img/list-stream.jpg" alt=""/>
+	</section>
+
+    <section class="blink-slide">
+      <h2>Blink</h2>
+      <div class="blink hide"></div>
+      <br>
+      <div class="fragment rail">
+      </div>
+	  <aside class="notes">
+		<ul>
+            <li>which brings us the the much loved blink element</li>
+            <li>not part of a standard so not really an element, just a bit of javascript that makes things blink</li>
+		</ul>
+	  </aside>
+    </section>
+
+    <section>
+        <img src="img/oscilo.jpg" height="500px">
+        <aside class="notes">
+            <ul>
+                <li>waveform</li>
+                <li>each dot represents an event, don't care => lets give it a value</li>
+                <li>at this point this should look similar to the operations on sequences that we saw before</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+      <h2>Stream vs Array</h2>
+      <p>It's all the same</p>
+      <p class="fragment">Almost</p>
+    </section>
+
+    <section class="stream-array">
+      <img src="img/array.svg">
+      <p style="font-size:150px;">≈</p>
+      <div class="rail"></div>
+        <aside class="notes">
+            <ul>
+                <li>similarity is not coincidental, stream is nothing else that an infinite sequence</li>
+                <li>if that's the case can we perform operations on it?</li>
+                <li>operations evaluated lazily</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Array#map</h2>
+        <img src="img/map.svg">
+    </section>
+
+    <section >
+        <h2>Stream#map?</h2>
+    </section>
+
+    <section class="stream-map">
+        <h2>Stream#map!</h2>
+      <div class="rail rail-input"></div>
+      <br>
+      <div class="rail rail-output"></div>
+	  <aside class="notes">
+		<ul>
+            <li>like map</li>
+		</ul>
+	  </aside>
+    </section>
+
+    <section>
+        <h2>Array#filter</h2>
+        <img src="img/filter.svg">
+    </section>
+
+    <section >
+        <h2>Stream#filter?</h2>
+    </section>
+
+    <section class="stream-filter">
+        <h2>Stream#filter!</h2>
+      <div class="rail rail-input"></div>
+      <br>
+      <div class="rail rail-output"></div>
+    </section>
+
+    <section>
+        <h2>Array#reduce</h2>
+        <img src="img/reduce.svg">
+    </section>
+
+    <section >
+        <h2>Stream#reduce?</h2>
+    </section>
+
+    <section class="stream-reduce">
+        <h2>Stream#scan!</h2>
+      <div class="rail rail-input"></div>
+      <br>
+      <div class="rail rail-output"></div>
+    </section>
+
+    <section class="preview">
+      <h2>Preview of the things to come</h2>
+      <input type="text" id="input" class="big-text">
+      <div class="rail rail-input-1"></div>
+      <br>
+      <div class="rail rail-input-2"></div>
+      <br>
+      <div class="rail rail-output"></div>
+    </section>
+
+    <section>
+	  <pre>
+        <code data-trim contenteditable>
+Bacon.fromEvent(input, 'keyup')
+    .map(function() {
+        return input.value;
+    }) 
+    .debounce(1000)
+    .flatMap(function(text) {
+        var user = fetch('https://api.github.com/users/' + text)
+            .then(function(a) { return a.json();  });
+        return Bacon.fromPromise(user);
+    })
+    .map(createDOMNode)
+    .onValue(addToDOM);
+        </code>
+	  </pre>
+    </section>
+  </div>
+</div>
+
+
+<script>
+
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: true,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// Optional reveal.js plugins
+	dependencies: [
+	  { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: 'plugin/zoom-js/zoom.js', async: true },
+	  { src: 'plugin/notes/notes.js', async: true }
+	]
+  });
+
+</script>
+
+<script>
+    Reveal.addEventListener('slidechanged', function(event) {
+        if(event.currentSlide.classList.contains('blink-slide')) {
+            var blinkElement = event.currentSlide.querySelector('.blink');
+            var rail = event.currentSlide.querySelector('.rail');
+
+            var ticker = Bacon.interval(1000);
+            var blinkOff = ticker.map(0);
+            var blinkOn = ticker.map(1).delay(500);
+
+            blinkOff.merge(blinkOn)
+                .onValue(function(value) {
+                    if(value === 1) {
+                        blinkElement.classList.remove('hide');
+                    } else {
+                        blinkElement.classList.add('hide');
+                    }
+                });
+            blinkOn
+                .map(function() {
+                    var circle = document.createElement('div');
+                    circle.className = 'circle';
+                    return circle;
+                })
+                .onValue(function(circle) {
+                    rail.appendChild(circle);
+                });
+
+            Bacon.fromEvent(rail, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+        } else if(event.currentSlide.classList.contains('stream-array')) {
+            var rail = event.currentSlide.querySelector('.rail');
+            var ticker = Bacon.interval(1000);
+            ticker
+                .map(1)
+                .scan(0, function(acc, e) {
+                    return acc + e;
+                })
+                .map(function(val) {
+                    var circle = document.createElement('div');
+                    circle.className = 'circle';
+
+                    var num = document.createElement('span');
+                    num.innerHTML = val;
+
+                    circle.appendChild(num)
+                    return circle;
+                })
+                .onValue(function(circle) {
+                    rail.appendChild(circle);
+                });
+
+            Bacon.fromEvent(rail, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+        } else if(event.currentSlide.classList.contains('stream-map')) {
+            var railIn = event.currentSlide.querySelector('.rail-input');
+            var railOut = event.currentSlide.querySelector('.rail-output');
+
+            var inStream = Bacon.interval(1000)
+                .map(1)
+                .scan(0, function(acc, e) {
+                    return acc + e;
+                })
+
+            var out = inStream.map(function(val) {
+                return val * 3;
+            });
+
+            inStream
+                .map(function(val) {
+                    var circle = document.createElement('div');
+                    circle.className = 'circle';
+
+                    var num = document.createElement('span');
+                    num.innerHTML = val;
+
+                    circle.appendChild(num)
+                    return circle;
+                })
+                .onValue(function(circle) {
+                    railIn.appendChild(circle);
+                });
+
+            out.map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('span');
+                num.innerHTML = val;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railOut.appendChild(circle);
+            });
+
+            Bacon.fromEvent(railIn, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+            Bacon.fromEvent(railOut, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                });
+        } else if(event.currentSlide.classList.contains('stream-filter')) {
+            var railIn = event.currentSlide.querySelector('.rail-input');
+            var railOut = event.currentSlide.querySelector('.rail-output');
+
+            var inStream = Bacon.interval(1000)
+                .map(1)
+                .scan(0, function(acc, e) {
+                    return acc + e;
+                })
+
+            var out = inStream.filter(function(val) {
+                return val % 2;
+            });
+
+            inStream
+                .map(function(val) {
+                    var circle = document.createElement('div');
+                    circle.className = 'circle';
+
+                    var num = document.createElement('span');
+                    num.innerHTML = val;
+
+                    circle.appendChild(num)
+                    return circle;
+                })
+                .onValue(function(circle) {
+                    railIn.appendChild(circle);
+                });
+
+            out.map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('span');
+                num.innerHTML = val;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railOut.appendChild(circle);
+            });
+
+            Bacon.fromEvent(railIn, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+            Bacon.fromEvent(railOut, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                });
+        } else if(event.currentSlide.classList.contains('stream-reduce')) {
+            var railIn = event.currentSlide.querySelector('.rail-input');
+            var railOut = event.currentSlide.querySelector('.rail-output');
+
+            var inStream = Bacon.interval(1000)
+                .map(1)
+                .scan(0, function(acc, e) {
+                    return acc + e;
+                })
+
+            var out = inStream
+                .scan(0, function(acc, e) {
+                    return acc + e;
+                })
+
+            inStream
+                .map(function(val) {
+                    var circle = document.createElement('div');
+                    circle.className = 'circle';
+
+                    var num = document.createElement('span');
+                    num.innerHTML = val;
+
+                    circle.appendChild(num)
+                    return circle;
+                })
+                .onValue(function(circle) {
+                    railIn.appendChild(circle);
+                });
+
+            out.map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('span');
+                num.innerHTML = val;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railOut.appendChild(circle);
+            });
+
+            Bacon.fromEvent(railIn, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+            Bacon.fromEvent(railOut, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                });
+        } else if(event.currentSlide.classList.contains('preview')) {
+            var railIn1 = event.currentSlide.querySelector('.rail-input-1');
+            var railIn2 = event.currentSlide.querySelector('.rail-input-2');
+            var railOut = event.currentSlide.querySelector('.rail-output');
+            var input = event.currentSlide.querySelector('#input');
+            var text = Bacon.fromEvent(input, 'keyup')
+                .map(function() {
+                    return input.value;
+                });
+
+            text.map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('span');
+                num.innerHTML = val;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railIn1.appendChild(circle);
+            });
+
+            var debounced = text
+                .debounce(1000);
+
+            debounced.map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('span');
+                num.innerHTML = val;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railIn2.appendChild(circle);
+            });
+
+            debounced
+            .flatMap(function(text) {
+                var promise = fetch('https://api.github.com/users/' + text)
+                    .then(function(a) { return a.json();  });
+                return Bacon.fromPromise(promise);
+            })
+            .map(function(val) {
+                var circle = document.createElement('div');
+                circle.className = 'circle';
+
+                var num = document.createElement('img');
+                num.src = val.avatar_url;
+
+                circle.appendChild(num)
+                return circle;
+            })
+            .onValue(function(circle) {
+                railOut.appendChild(circle);
+            });
+
+
+            Bacon.fromEvent(railIn1, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+            Bacon.fromEvent(railIn2, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                })
+            Bacon.fromEvent(railOut, 'animationend')
+                .onValue(function(event) {
+                    event.target.remove();
+                });
+        }
+    });
+
+</script>
+
+</body>
+</html>

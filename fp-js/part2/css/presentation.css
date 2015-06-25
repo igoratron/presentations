@@ -1,0 +1,48 @@
+.blink {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 3px solid white !important;
+    background: #4c4c4c;
+    border-radius: 50%;
+    margin: 0 auto !important;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.reveal .rail {
+  border: 2px solid gray;
+  margin-top: 25px;
+  position: relative;
+}
+
+.reveal .circle {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: #4c4c4c;
+  border-radius: 50%;
+  border: 3px solid white;
+  -webkit-animation: slide 5s linear;
+}
+
+.big-text {
+    font-size: 50px;
+}
+
+.circle span {
+    font-size: 30px;
+}
+
+@-webkit-keyframes slide {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-1000px);
+  }
+}
